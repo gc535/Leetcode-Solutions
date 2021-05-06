@@ -1,0 +1,19 @@
+Given an array of points where points[i] = [xi, yi] represents a point on the X-Y plane, return the maximum number of points that lie on the same straight line.
+
+Example 1:
+Input: points = [[1,1],[2,2],[3,3]]
+Output: 3
+
+Example 2:
+Input: points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
+Output: 4
+
+Sol:
+1. for each point, draw line with other points, then get slope:
+  a. use find gcd of (dy, dx), so we can represent slop as (dy/gcd, dx/gcd). there is not float precision issue.
+  b. record max slope count
+2. note that we dont need to handle processed point:
+  eg. [1-2, 1-3, 1-4, 1-5]
+      [2-3, 2-4, 2-5]
+      [3-4, 3-5]
+      etc
