@@ -1,0 +1,31 @@
+Given an integer array arr, remove a subarray (can be empty) from arr such that the remaining elements in arr are non-decreasing.
+
+A subarray is a contiguous subsequence of the array.
+
+Return the length of the shortest subarray to remove.
+
+[1,2,3,10,4,2,3,5] -> [1,2,3,3,5]  (remove 3)
+
+
+sol 
+
+attempt 1:
+
+min/max index + binary search
+
+1. create min index pos array
+    eg. [1,2,3,10,4,2,3,5] -> [2, 2, 2, 2,  2,  2,  3,  5] 
+2. starting from index 0 of original array, using binary search in index array to find first greater pos.
+
+O(nlogn)
+
+attemp2:
+1. find left, right point where both array are sorted order.
+2. while i < left and j < right, iterate two pointer to record max len.
+
+O(N)
+
+
+
+
+

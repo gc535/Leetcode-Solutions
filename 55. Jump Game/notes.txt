@@ -1,0 +1,21 @@
+
+[3,2,1,0,4] -> true
+
+sol: 
+
+attempt 1:  O(N^2)
+iterate from backwards
+1. if current val > dist to the end, mark yes
+2. or if current val, can reach any pos with "yes" mark, mark yes
+
+
+
+
+
+attmep 2: O(N)
+iterate from backwards
+use range records "min_left"
+1. if current val > dist to the end, update min_left = cur_i
+2. else if cur_i + val >= min_left, update min_left = cur_i
+
+
