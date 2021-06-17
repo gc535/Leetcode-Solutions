@@ -1,32 +1,33 @@
 import heapq
+
 class Solution(object):
-    def assignTasks(self, servers, tasks):
-        numTasks = len(tasks)
-        if len(servers) == 1: return [0 for i in range(numTasks)]
+    def eatenApples(self, apples, days):
+        lastday = len(apples)
+        day = 0
+        apple_heap = []
+        heapq.heapify(apple_heap)
+        ret = 0
+
+        while day < lastday:
+            if apples[day] > 0:
+                heapq.heappush(apple_heap, [day+days[day], apples[day]])
+            
+            if apple_heap and apple_heap[0][0] > day:
+                ret += 1
+                apple_heap[0][1] -= 1
+                if apple_heap[0][1] == 0:
+                    heapq.heappop(apple_heap)
+            day += 1
+
+            while apple_heap and apple_heap[0][0] <= day:
+                heapq.heappop(apple_heap)
+
         
-        aval = []
-        busy = []
-        heapq.heapify(aval)
-        heapq.heapify(busy)
-        for i in range(len(servers)):
-            heapq.heappush(aval, [servers[i], i])
-
-        ret = []
-        time = 0
-        for i in range(numTasks):
-            time = max(time, i)
-            if len(aval) == 0:
-                time = busy[0][0]
-
-            # check if busy server becomes available again
-            while len(busy) > 0 and busy[0][0] <= time:
-                [_, index] = heapq.heappop(busy)
-                heapq.heappush(aval, [servers[index], index])
-
-            # assign tasks to first available server in the min heap
-            taskTime = tasks[i]
-            [_, index] = heapq.heappop(aval)
-            heapq.heappush(busy, [time + taskTime, index])
-            ret.append(index)
+        while apple_heap:
+            [expire, counts] = heapq.heappop(apple_heap)
+            if day < expire:
+                jump_to = min(expire, day + counts)
+                ret += jump_to - day
+                day = jump_to
 
         return ret
