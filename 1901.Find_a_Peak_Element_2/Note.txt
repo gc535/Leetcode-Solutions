@@ -1,0 +1,23 @@
+A peak element in a 2D grid is an element that is strictly greater than all of its adjacent neighbors to the left, right, top, and bottom.
+
+Given a 0-indexed m x n matrix mat where no two adjacent cells are equal, find any peak element mat[i][j] and return the length 2 array [i,j].
+
+You may assume that the entire matrix is surrounded by an outer perimeter with the value -1 in each cell.
+
+You must write an algorithm that runs in O(m log(n)) or O(n log(m)) time.
+
+Solution:
+
+attemp1:
+key observation: any 2 x m array has a max element, and it is the peak!
+1. non-trivial baseline condition is 2 x m array. The local maximun find is the solution!
+2. To scale down to baseline from any array, we need to find a sub 2 x m array in a m x n array, such that a it's left and right neighbour columns does not have local maximum.
+3. To guarantee 2, in a m x n array, we just need to make sure that are no local maximum in the neighbour cols before truncate its into half size. If there is, use neighbour col side instead after half-truncate.
+
+eg. 
+ assume "8" is the local maximun in col[5] and col[6]. Then use the left side to continue.           
+x x x x x x | x x x x x x 
+x x x x x x | x x x x x x 
+x x x x x 8 | x x x x x x 
+x x x x x x | x x x x x x 
+x x x x x x | x x x x x x 
