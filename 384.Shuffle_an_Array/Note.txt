@@ -12,6 +12,7 @@ Perfect Even Shuffle (knuth shuffle algo)
 goal: every element should be equally likely to show up in any location.
 
 for i in (n-1, 0):
-    pos = rand(0, i)
+    pos = rand(0, i) % i
     swap(arr[i], arr[pos])
     
+Note: we start from the end to begin is because we can use rand()%i, otherwise we cannot simply use % to get random between the rest of elements.
