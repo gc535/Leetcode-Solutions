@@ -1,0 +1,28 @@
+Given the root of a binary tree, return all duplicate subtrees.
+For each kind of duplicate subtrees, you only need to return the root node of any one of them.
+Two trees are duplicate if they have the same structure with the same node values.
+
+example: 
+Input: root = [1,2,3,4,null,2,4,null,null,4]
+Output: [[2,4],[4]]
+
+Sol: post order serialization, or pre-order
+val + left_serial + right_serial
+Note: 
+1. Inorder wont work. Becasue it cannot determine a unique tree. (try )
+
+    0
+   / \
+ #    0
+     / \
+    #    #   
+    
+and 
+
+       0
+      / \
+    0    #
+   / \
+  #   #
+  
+save all subtree in a map for counting.
