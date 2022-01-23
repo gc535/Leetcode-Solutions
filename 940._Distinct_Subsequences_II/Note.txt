@@ -1,0 +1,13 @@
+Given a string s, return the number of distinct non-empty subsequences of s. Since the answer may be very large, return it modulo 109 + 7.
+
+A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not.
+
+sol:
+1. suppose current char are "ab", so there are 3 unique substrings: a, b, ab
+2. every new char should add (n + 1) new substrings
+3. if new char is used before, (eg. abb), then it will double count the substrings brings by first b used, we should deduct them.
+
+thus, we need to know
+how many substr that each new char brings in. if new char used mutiple times, we should sum the new substring they bring in.
+how many unique substr in total we have right now. 
+
