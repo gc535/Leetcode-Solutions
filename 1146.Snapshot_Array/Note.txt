@@ -1,0 +1,19 @@
+Implement a SnapshotArray that supports the following interface:
+
+SnapshotArray(int length) initializes an array-like data structure with the given length.  Initially, each element equals 0.
+void set(index, val) sets the element at the given index to be equal to val.
+int snap() takes a snapshot of the array and returns the snap_id: the total number of times we called snap() minus 1.
+int get(index, snap_id) returns the value at the given index, at the time we took the snapshot with the given snap_id
+
+SOL:
+The trick here is to optimize to: 
+snap: O(1)
+set: O(1)
+get: O(logN)
+Otherwise, straightforward snap O(N) will be TLE.
+space:
+O(NK) N: length, K: num of snapshot actions
+
+To save memory: 
+1. repeat snap should take O(1)
+2. not snapshot history should overwrite rather than append 
