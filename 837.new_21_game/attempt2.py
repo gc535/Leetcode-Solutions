@@ -11,6 +11,7 @@ class Solution(object):
             # if cur score >= k, then cur score cannot proceed
             if i < k: prevSum += perms[i]
             # get rid of pre-smallest score prob, which cannot reach i with '+ maxPts'
+            # has to exclude 0 becasue first maxPtr + 1 cannot be a single draw directly.
             if i - maxPts >= 0: prevSum -= perms[i-maxPts]
-        
+
         return sum(perms[k:])
