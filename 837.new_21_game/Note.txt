@@ -17,5 +17,16 @@ perm(x) = perm(x-1) + perm(x-2) + ... + perm(x-maxPts)
 
 dp_table x: perm(x)
 
+attempt2:
+naive dp LTE, so simply the solution: 
+since perm(x) = perm(x-1) + perm(x-2) + ... + perm(x-maxPts) 
+perm(x) = sum (a window of prob)
+we only need to maintain this sum.
 
+_ _ _ _ _sum(|i-maxPtr|...|...|i-1|)       = i
+_ _ _ _ _ _ sum(|i+1-maxPtr|...|...|i+1|)  = i + 1
+          ^                          ^
+          |                          |
+          |         keep if it can goes into next round
+ drop if it cannot reach next round
  
