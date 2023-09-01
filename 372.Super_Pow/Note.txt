@@ -1,0 +1,31 @@
+Your task is to calculate a^b mod 1337 where a is a positive integer and b is an extremely large positive integer given in the form of an array.
+
+ 
+
+Example 1:
+
+Input: a = 2, b = [3]
+Output: 8
+
+余数指数法则:
+if x ≡ y % m, 则 x^k ≡ y^k % m
+
+推导：
+a^b % 1337 ≡ x^b % 1337
+a % 1337 ≡ x % 1337
+
+attemp 1: 
+只用 mod 乘法，指数法则： 
+    乘法法则：若 x ≡ y mod(m) 则有 x^k ≡ y^k mod(m)
+    若整数 x 对 m 的取模 为 r 时, 则满足 x ≡ r mod(m)
+    所以有 x^k ≡ r^k mod(m)，即可以直接用模运算再取模
+
+    指数法则也同样
+
+    所以我们只需要拆分 a 的 array巨大指数 拆分成指数加法乘法，每次取模代入下次运算即可
+
+attemp 2：
+研究 欧拉算法：
+1. Euler Totient Function： 如何计算 1337 的 phi（1337） ?
+2. 如何使用 欧拉方程： a^ϕ(n) ≡ 1(modn)
+    
